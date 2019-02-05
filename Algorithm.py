@@ -1,5 +1,6 @@
 #Algorithm.py = file untuk algoritma
 
+import sys
 from main import partition,quickSort
 from Classes import Numbers
 
@@ -24,7 +25,7 @@ def compare24(num,exp): #menghitung bobot skor
 def main(): #main program
     global List
     global totalscore
-    with open("case.txt","r") as f: #baca teks dari hans
+    with open(sys.argv[1],"r") as f: #baca teks dari hans
         #read first line
         for value in next(f).split():
             value=int(value)
@@ -53,5 +54,9 @@ def main(): #main program
     print(List[0].E)
     totalscore-=abs(24-List[0].N)
     print("totalscore="+str(totalscore))
+    fx = open(sys.argv[2],"w")#tulis ke file
+    fx.write(List[0].E)
+    fx.write("\nTotal Skor: ")
+    fx.write(str(totalscore))
 
 main()
