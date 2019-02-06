@@ -79,3 +79,15 @@ class Numbers:
             return (self.N/Nx.N)
         except AttributeError:
             return (self.N/Nx)
+
+
+class card:
+    """card = 1 kartu"""
+
+    def __init__(self,number,filename):
+        self.N = number
+        self.FN = filename
+
+    def c2n():
+        N=Numbers(self.N,str(self.N))
+        return N

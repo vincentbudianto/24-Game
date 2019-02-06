@@ -2,13 +2,32 @@
 
 import sys
 from main import partition,quickSort
-from Classes import Numbers
+from Classes import Numbers,card
 
 #inisiasi global variabel
+deck=[]
 List=[]
 totalscore=0
+filedir="./Picture/"
+fileext=".png"
+specialcard=["A","J","Q","K"]
+suit=["S","D","C","H"]
 
 #fungsi tambahan
+def initiatedeck():
+    global deck
+    for i in range(1,14):
+        for fn in suit:
+            if (i==1 or i>10):
+                s=filedir+specialcard[(i%10)+(i//10)-1]+fn+fileext
+                c=card(i,s)
+                deck.append(c)
+            else:
+                s=filedir+str(i)+fn+fileext
+                c=card(i,s)
+                deck.append(c)
+
+
 def compare24(num,exp): #menghitung bobot skor
     skor=0
     if (exp=='+'):
@@ -24,7 +43,11 @@ def compare24(num,exp): #menghitung bobot skor
 
 def main(): #main program
     global List
+    global deck
     global totalscore
+    """initiatedeck()
+    for cards in deck:
+        print(cards.FN)"""
     with open(sys.argv[1],"r") as f: #baca teks dari hans
         #read first line
         for value in next(f).split():
