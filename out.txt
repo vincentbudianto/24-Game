@@ -1,2 +1,2 @@
-5*3+2+1
-Total Skor: 7
+10+9+4+1
+Total Skor: 15

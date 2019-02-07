@@ -88,6 +88,6 @@ class card:
         self.N = number
         self.FN = filename
 
-    def c2n():
+    def c2n(self):
         N=Numbers(self.N,str(self.N))
         return N
