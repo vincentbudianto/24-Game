@@ -52,9 +52,7 @@ def mainwithargv(): #main program
 			x=Numbers(value,str(value))
 			List.append(x)
 	(List,totalscore)=Listprocessf(List,totalscore)
-	print(List[0].E)
 	totalscore-=abs(24-List[0].N)
-	print("totalscore="+str(totalscore))
 	fx = open(sys.argv[2],"w")#tulis ke file
 	fx.write(List[0].E)
 	fx.write("\nTotal Skor: ")
