@@ -5,6 +5,8 @@
 	Deskripsi : GUI untuk output hasil '''
 
 import time
+from functions import *
+from Algorithm import *
 from kivy.core.window import Window
 from kivy.app import App
 from kivy.metrics import dp
@@ -338,43 +340,14 @@ ScreenManager:
 				halign: 'right'
 				valign: 'bottom'
 '''
-k1 = './Picture/2S.png'
-k2 = './Picture/2D.png'
-k3 = './Picture/2H.png'
-k4 = './Picture/2C.png'
-x = '8 * (3 - 8 / 3)'
-y = '8'
-z = 52
+
+deck = initiatedeck()
 
 class Screen1(Screen):
 	pass
-'''	def play(self):
-		global x
-		global y
-		
-		name += str(self.ids.playername.text)
-		self.ids._hasil.text += str(x)
-		self.ids._poin.text += str(y)
-		
-		if (len(name) <= 10):
-			print('a')
-			screenmanager.current = 'Screen2'
-			print('b')
-		else:
-			name = ''
-			self.ids.errorcode.opacity = 1
-'''
 
 class Screen2(Screen):
 	pass
-'''	def out(self):
-		global name
-		
-		print('c')
-		self.ids.pname.text += str(name)
-		self.ids.hasil.text += str(x)
-		self.ids.poin.text += str(y)
-'''
 
 class Screen3(Screen):
 	pass
@@ -386,58 +359,51 @@ class main(App):
 	
 	def build(self):
 		main_widget = Builder.load_string(main_widget_kv)
-		'''sm = ScreenManager()
-		sm.add_widget(Screen1(name='Screen1'))
-		sm.add_widget(Screen2(name='Screen2'))
-		'''
 		
-		return main_widget #sm
+		return main_widget
 	
 	def valid(self):
-		global z
-		global k1
-		global k2
-		global k3
-		global k4
+		global deck
+		global List
 		
-		self.root.ids.gbr1.source = str(k1)
-		self.root.ids.gbr2.source = str(k2)
-		self.root.ids.gbr3.source = str(k3)
-		self.root.ids.gbr4.source = str(k4)
-
 		if (len(self.root.ids.playername.text) <= 10):
 			self.root.ids.errorcode.opacity = 0
-			self.root.ids._cardsleft.text = str(z)
+			self.root.ids._cardsleft.text = str(len(deck))
+			(List, deck, drawncards) = draw4(deck)
+			self.root.ids.gbr1.source = str(drawncards[0].FN)
+			self.root.ids.gbr2.source = str(drawncards[1].FN)
+			self.root.ids.gbr3.source = str(drawncards[2].FN)
+			self.root.ids.gbr4.source = str(drawncards[3].FN)
 			self.root.current = 'Screen2'
 		else:
 			self.root.ids.errorcode.opacity = 1
 	
 	def next(self):
-		global name
-		global x
-		global y
-		global z
+		global List
 		
-		z -= 4
-		self.root.ids._hasil.text = str(x)
-		self.root.ids._poin.text = str(y)
-		self.root.ids._cardsleft.text = str(z)
+		totalscore=0
+		(List,totalscore)=Listprocessf(List,totalscore)
+		List[0].E=kurung(List[0].E)
+		totalscore-=abs(24-List[0].N)
+		
+		self.root.ids._hasil.text = str(List[0].E)
+		self.root.ids._poin.text = str(totalscore)
+		self.root.ids._cardsleft.text = str(len(deck))
 		self.root.ids.totalpoin.text = str(int(self.root.ids.totalpoin.text) + int(self.root.ids._poin.text))
 		
 		self.root.current = 'Screen3'
 		
 	def nextdraw(self):
-		global z
-		global k1
-		global k2
-		global k3
-		global k4
+		global deck
+		global List
 		
-		self.root.ids.gbr1.source = str(k1)
-		self.root.ids.gbr2.source = str(k2)
-		self.root.ids.gbr3.source = str(k3)
-		self.root.ids.gbr4.source = str(k4)
-		if (z > 0):
+		
+		if (len(deck) > 0):
+			(List, deck, drawncards) = draw4(deck)
+			self.root.ids.gbr1.source = str(drawncards[0].FN)
+			self.root.ids.gbr2.source = str(drawncards[1].FN)
+			self.root.ids.gbr3.source = str(drawncards[2].FN)
+			self.root.ids.gbr4.source = str(drawncards[3].FN)
 			self.root.current = 'Screen2'
 		else:
 			content = MDLabel(font_style = 'Body1',
@@ -459,9 +425,9 @@ class main(App):
 			self.dialog.open()
 	
 	def	newgame(self):
-		global z
+		global deck
 		
-		z = 52
+		deck = initiatedeck()
 	
 if __name__ == '__main__':
 	main().run()
