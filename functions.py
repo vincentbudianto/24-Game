@@ -59,14 +59,7 @@ def kurung(st,totalscore): #menambahkan kurung pada st
 		totalscore-=1
 	else:
 		return (st,totalscore)
-'''
-with open(sys.argv[1],"r") as f:
-	#read first line
-	data = [int(value) for value in next(f).split()]
-	#case > 1 line
-	# array = [[int(value) for value in line.split()] for line in f]
-	# print (data)
-'''
+
 def partition(data,low,high):
 	i = (low - 1)   #index
 	pivot = data[high]
@@ -120,8 +113,4 @@ def quickSort (data,low,high):
 
 		quickSort(data,low, pi-1)
 		quickSort(data,pi+1, high)
-'''
-n = len(data)
-quickSort(data,0,n-1)
-print (data)
-'''
+
