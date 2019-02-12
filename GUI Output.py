@@ -96,7 +96,7 @@ ScreenManager:
 					elevation_normal: 2
 					opposite_colors: True
 					pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-					on_press: 
+					on_press:
 						app.valid()
 						pname1.text = "Name : " + playername.text
 						cardsleft1.text = "Cards Left: " + _cardsleft.text
@@ -111,12 +111,12 @@ ScreenManager:
 					opposite_colors: True
 					pos_hint: {'center_x': 0.5, 'center_y': 0.4}
 					on_press: app.close()
-	
+
 	Screen2:
 		name: 'Screen2'
 		id: Screen2
 		canvas.before:
-			Color: 
+			Color:
 				rgba: 0, 1, 1, 1
 			Rectangle:
 				source: './Picture/gbr2.jpg'
@@ -139,7 +139,7 @@ ScreenManager:
 				id: _hasil
 				text: ''
 				opacity: 0
-			
+
 			MDLabel:
 				id: _poin
 				text: ''
@@ -203,7 +203,7 @@ ScreenManager:
 		name: 'Screen3'
 		id: Screen3
 		canvas.before:
-			Color: 
+			Color:
 				rgba: 0, 1, 1, 1
 			Rectangle:
 				source:'./Picture/gbr3.jpg'
@@ -283,7 +283,7 @@ ScreenManager:
 						elevation_normal: 2
 						opposite_colors: True
 						pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-						on_press: 
+						on_press:
 							app.nextdraw()
 				BoxLayout:
 					Button:
@@ -294,7 +294,7 @@ ScreenManager:
 						elevation_normal: 2
 						opposite_colors: True
 						pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-						on_press: 
+						on_press:
 							hasil.text = ""
 							_hasil.text = ""
 							poin.text = ""
@@ -317,7 +317,7 @@ ScreenManager:
 						elevation_normal: 2
 						opposite_colors: True
 						pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-						on_release: 
+						on_release:
 							app.close()
 		BoxLayout:
 			orientation: 'horizontal'
@@ -356,16 +356,16 @@ class main(App):
 	theme_cls = ThemeManager()
 	title = "24 Game"
 	Window.fullscreen = 'auto'
-	
+
 	def build(self):
 		main_widget = Builder.load_string(main_widget_kv)
-		
+
 		return main_widget
-	
+
 	def valid(self):
 		global deck
 		global List
-		
+
 		if (len(self.root.ids.playername.text) <= 10):
 			self.root.ids.errorcode.opacity = 0
 			self.root.ids._cardsleft.text = str(len(deck))
@@ -377,27 +377,27 @@ class main(App):
 			self.root.current = 'Screen2'
 		else:
 			self.root.ids.errorcode.opacity = 1
-	
+
 	def next(self):
 		global List
-		
+
 		totalscore=0
 		(List,totalscore)=Listprocessf(List,totalscore)
-		List[0].E=kurung(List[0].E)
+		(List[0].E,totalscore)=kurung(List[0].E)
 		totalscore-=abs(24-List[0].N)
-		
+
 		self.root.ids._hasil.text = str(List[0].E)
 		self.root.ids._poin.text = str(totalscore)
 		self.root.ids._cardsleft.text = str(len(deck))
 		self.root.ids.totalpoin.text = str(int(self.root.ids.totalpoin.text) + int(self.root.ids._poin.text))
-		
+
 		self.root.current = 'Screen3'
-		
+
 	def nextdraw(self):
 		global deck
 		global List
-		
-		
+
+
 		if (len(deck) > 0):
 			(List, deck, drawncards) = draw4(deck)
 			self.root.ids.gbr1.source = str(drawncards[0].FN)
@@ -423,11 +423,11 @@ class main(App):
 			self.dialog.add_action_button("Dismiss",
 										  action=lambda *x: self.dialog.dismiss())
 			self.dialog.open()
-	
+
 	def	newgame(self):
 		global deck
-		
+
 		deck = initiatedeck()
-	
+
 if __name__ == '__main__':
 	main().run()

@@ -12,7 +12,6 @@ totalscore=0
 
 #fungsi tambahan
 def initiatedeck(): #inisiasi dek
-	global deck
 	deck=[]
 	for i in range(1,14):
 		for fn in suit:
@@ -39,8 +38,7 @@ def compare24(num,exp): #menghitung bobot skor
 	skor=skor-abs(24-num)
 	return skor
 
-def kurung(st): #menambahkan kurung pada st
-	global totalscore
+def kurung(st,totalscore): #menambahkan kurung pada st
 	b=[]
 	idx=[]
 	i=0
@@ -60,7 +58,7 @@ def kurung(st): #menambahkan kurung pada st
 		return "("+st[0:idx[1]]+")"+st[idx[1]:]
 		totalscore-=1
 	else:
-		return st
+		return (st,totalscore)
 '''
 with open(sys.argv[1],"r") as f:
 	#read first line
@@ -83,17 +81,16 @@ def partition(data,low,high):
 	return (i + 1)
 
 def draw4(deck):  #mengambil 4 kartu dari deck (fungsi)
-	global List
 	List=[]
 	drawncards=[]
-	
+
 	for i in range (1,5):
 		x=random.randint(0,len(deck)-1)
 		c=deck.pop(x)
 		drawncards.append(c)
 		List.append(c.c2n())
 	return (List,deck,drawncards)
-	
+
 def Listprocessf(List,totalscore):
 	quickSort(List,0,len(List)-1)
 	while (len(List)>1):

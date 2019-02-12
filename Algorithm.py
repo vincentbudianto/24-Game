@@ -8,7 +8,7 @@ deck=[]
 def take4():  #mengambil 4 kartu dari deck
 	global deck
 	global List
-	
+
 	for i in range (1,5):
 		x=random.randint(0,len(deck)-1)
 		c=deck.pop(x)
@@ -17,7 +17,7 @@ def take4():  #mengambil 4 kartu dari deck
 def Listprocess():
 	global List
 	global totalscore
-	
+
 	quickSort(List,0,len(List)-1)
 	while (len(List)>1):
 		N1=List.pop(0)
@@ -38,7 +38,7 @@ def Listprocess():
 				totalscore+=2
 		List.append(N3)
 		quickSort(List,0,len(List)-1)
-		
+
 
 def mainwithargv(): #main program
 	global List
@@ -51,7 +51,7 @@ def mainwithargv(): #main program
 			value=int(value)
 			x=Numbers(value,str(value))
 			List.append(x)
-	Listprocess()
+	(List,totalscore)=Listprocessf(List,totalscore)
 	print(List[0].E)
 	totalscore-=abs(24-List[0].N)
 	print("totalscore="+str(totalscore))
@@ -59,19 +59,6 @@ def mainwithargv(): #main program
 	fx.write(List[0].E)
 	fx.write("\nTotal Skor: ")
 	fx.write(str(totalscore))
-	
-	
-def mainwithcards():
-	global deck
-	global List
-	global totalscore
-	List=[]
-	take4()
-	Listprocess()
-	List[0].E=kurung(List[0].E)
-	#print(s)
-	totalscore-=abs(24-List[0].N)
-	#print("totalscore="+str(totalscore))
 
 if (len(sys.argv) == 3):
 	mainwithargv()
