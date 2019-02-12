@@ -383,7 +383,7 @@ class main(App):
 
 		totalscore=0
 		(List,totalscore)=Listprocessf(List,totalscore)
-		(List[0].E,totalscore)=kurung(List[0].E)
+		(List[0].E,totalscore)=kurung(List[0].E,totalscore)
 		totalscore-=abs(24-List[0].N)
 
 		self.root.ids._hasil.text = str(List[0].E)
