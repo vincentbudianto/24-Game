@@ -41,22 +41,22 @@ def Listprocess():
 
 
 def mainwithargv(): #main program
-	global List
-	global totalscore
-
-	List=[]
-	with open(sys.argv[1],"r") as f: #baca teks dari hans
-		#read first line
-		for value in next(f).split():
-			value=int(value)
-			x=Numbers(value,str(value))
-			List.append(x)
-	(List,totalscore)=Listprocessf(List,totalscore)
-	totalscore-=abs(24-List[0].N)
-	fx = open(sys.argv[2],"w")#tulis ke file
-	fx.write(List[0].E)
-	fx.write("\nTotal Skor: ")
-	fx.write(str(totalscore))
+    global List
+    global totalscore
+    List=[]
+    with open(sys.argv[1],"r") as f: #baca teks dari hans
+    	#read first line
+    	for value in next(f).split():
+    		value=int(value)
+    		x=Numbers(value,str(value))
+    		List.append(x)
+    (List,totalscore)=Listprocessf(List,totalscore)
+    totalscore-=abs(24-List[0].N)
+    (List[0].E,totalscore)=kurung(List[0].E,totalscore)
+    fx = open(sys.argv[2],"w")#tulis ke file
+    fx.write(List[0].E)
+    fx.write("\nTotal Skor: ")
+    fx.write(str(totalscore))
 
 if (len(sys.argv) == 3):
 	mainwithargv()

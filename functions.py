@@ -52,13 +52,12 @@ def kurung(st,totalscore): #menambahkan kurung pada st
 			idx.append(i)
 		i+=1
 	if (not b[1] and b[2]):
-		return "("+st[0:idx[2]]+")"+st[idx[2]:]
+		st="("+st[0:idx[2]]+")"+st[idx[2]:]
 		totalscore-=1
 	elif (not b[0] and b[1]):
-		return "("+st[0:idx[1]]+")"+st[idx[1]:]
+		st="("+st[0:idx[1]]+")"+st[idx[1]:]
 		totalscore-=1
-	else:
-		return (st,totalscore)
+	return (st,totalscore)
 
 def partition(data,low,high):
 	i = (low - 1)   #index
@@ -113,4 +112,3 @@ def quickSort (data,low,high):
 
 		quickSort(data,low, pi-1)
 		quickSort(data,pi+1, high)
-
