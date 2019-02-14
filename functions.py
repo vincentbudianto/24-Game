@@ -1,3 +1,9 @@
+''' NIM/Nama  : 13517020/T. Antra Oksidian Tafly, 13517137/Vincent Budianto, 13517146/Hansen
+	Nama file : functions.py
+	Topik     : Tugas Besar 1 IF2211-Strategi Algoritma
+	Tanggal   : 13 Februari 2019
+	Deskripsi : fungsi dan prosedur yang digunakan pada program '''
+
 import sys
 import random
 from Classes import Numbers,card

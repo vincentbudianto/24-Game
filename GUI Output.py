@@ -6,9 +6,9 @@
 
 import time
 from functions import *
-from Algorithm import *
 from kivy.core.window import Window
 from kivy.app import App
+from kivy.core.audio import SoundLoader
 from kivy.metrics import dp
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.image import Image
@@ -356,12 +356,11 @@ class main(App):
 	theme_cls = ThemeManager()
 	title = "24 Game"
 	Window.fullscreen = 'auto'
-
+	
 	def build(self):
 		main_widget = Builder.load_string(main_widget_kv)
-
 		return main_widget
-
+        
 	def valid(self):
 		global deck
 		global List
@@ -430,4 +429,7 @@ class main(App):
 		deck = initiatedeck()
 
 if __name__ == '__main__':
+	sound = SoundLoader.load('./Voyage.wav')
+	sound.loop = True
+	sound.play()
 	main().run()

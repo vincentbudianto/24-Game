@@ -1,4 +1,8 @@
-#File untuk kelas
+''' NIM/Nama  : 13517020/T. Antra Oksidian Tafly, 13517137/Vincent Budianto, 13517146/Hansen
+	Nama file : Classes.py
+	Topik     : Tugas Besar 1 IF2211-Strategi Algoritma
+	Tanggal   : 13 Februari 2019
+	Deskripsi : class yang digunakan program '''
 
 class Numbers:
     """Numbers= Bagian dari list dari input number"""
