@@ -1,5 +1,5 @@
 ''' NIM/Nama  : 13517020/T. Antra Oksidian Tafly, 13517137/Vincent Budianto, 13517146/Hansen
-	Nama file : batchXX_kelompok32.py
+	Nama file : batch32_kelompok32.py
 	Topik     : Tugas Besar 1 IF2211-Strategi Algoritma
 	Tanggal   : 13 Februari 2019
 	Deskripsi : Program utama '''
