@@ -1,3 +1,9 @@
+''' NIM/Nama  : 13517020/T. Antra Oksidian Tafly, 13517137/Vincent Budianto, 13517146/Hansen
+	Nama file : Algorithm.py
+	Topik     : Tugas Besar 1 IF2211-Strategi Algoritma
+	Tanggal   : 13 Februari 2019
+	Deskripsi : Program utama 24 Game '''
+
 import sys
 import random
 from functions import *
